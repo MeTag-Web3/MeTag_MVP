@@ -13,6 +13,7 @@ import telegram from "../public/icons/telegram.svg";
 import logo from "../public/icons/metag_logo.svg";
 import logo_footer from "../public/icons/logo_footer.svg";
 import Gradient from "../components/Gradient";
+import axios from "axios";
 
 
 function Dashboard() {
@@ -76,13 +77,54 @@ function Dashboard() {
       catch (error) {
         console.log('error', error);
     }
-}
+  }
+  
+  // const fs = require("fs");
+  // const fetch = require("node-fetch");
+  // const FormData = require("form-data");
+
+  // const form = new FormData();
+  // const fileStream = fs.createReadStream("/path/to/file_to_upload.png");
+  // form.append("file", fileStream);
+
+  // const options = {
+  //   method: "POST",
+  //   body: form,
+  //   headers: {
+  //     Authorization: "0f9b00bf-73e0-4c0c-8691-06e70948d2b6",
+  //   },
+  // };
+
+  const mintNft = async ()  => {
+ await fetch(
+      "https://api.nftport.xyz/v0/mints/easy/files?" +
+        new URLSearchParams({
+          chain: "polygon",
+          name: "NFT_Name",
+          description: "NFT_Description",
+          mint_to_address: "Wallet_Address",
+        }),
+      options
+    )
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (responseJson) {
+        // Handle the response
+        console.log(responseJson);
+      })
+   .catch(error => {
+      console.log(error)
+    })  
+    
+  }
+
 
 
 
   return (
     <>
-    <Gradient/>
+      <Gradient />
       <div className="text-[#F8FAFC] text-[24px] px-24 pb-6 pt-10 font-roboto font-bold relative">
         Admin Dashboard
       </div>
@@ -223,24 +265,52 @@ function Dashboard() {
         </div>
         <div className=" bg-[#0f172a4d] rounded-3xl p-7 mt-6">
           <div className="flex flex-col">
-            <h4>Join Private Community</h4>
-            <h5 className="text-[#94A3B8] font-normal">
+            <h4>MINT YOUR NFT</h4>
+            {/* <h5 className="text-[#94A3B8] font-normal">
               Invite or share information about your channels or webpages
-            </h5>
+            </h5> */}
             <div className="flex justify-between items-center mt-8">
               <input
                 type="text"
-                placeholder="https://discord.gg/8wFar7sQ"
-                className="border-[#334155] border bg-[#1E293B] rounded-lg text-[#DBEAFE] py-2 px-10 w-[700px]"
+                placeholder="UserName"
+                className="border-[#334155] border bg-[#1E293B] rounded-lg text-[#DBEAFE] py-2 px-10 w-[400px]"
                 //   value={metamaskAccount}
                 //   onChange={(e) => setMetamaskAccount(e.target.value)}
               />
-              <button className="font-roboto font-  border px-[60px] py-2 border-[#6633FF] hover:bg-[#6633FF]">
+              {/* <button className="font-roboto font-  border px-[60px] py-2 border-[#6633FF] hover:bg-[#6633FF]">
                 Connect
-              </button>
+              </button> */}
             </div>
+            <form action="/action_page.php">
+              <input
+                type="file"
+                className="border-[#334155] border bg-[#1E293B] rounded-lg text-[#DBEAFE] py-2 px-10 w-[400px] mt-5"
+                id="myFile"
+                name="filename"
+              />
+              {/* <input type="submit" /> */}
+            </form>
           </div>
           <div className="flex mt-10 mb-10 space-x-4">
+            <button
+              className="font-roboto  border-2 px-[40px] py-2 border-[#6633FF] hover:bg-[#6633FF]"
+              onClick={mintNft}
+            >
+              MINT NFT
+            </button>
+            {/* <button className="font-roboto  border-2 px-[40px] py-2 border-[#6633FF] hover:bg-[#6633FF] ">
+              Add Discord Invite
+            </button>
+            <button className="font-roboto  border-2 px-[40px] py-2 border-[#6633FF] hover:bg-[#6633FF] ">
+              Add Phone
+            </button>
+            <button className="font-roboto  border-2 px-[40px] py-2 border-[#6633FF] hover:bg-[#6633FF] ">
+              Add Website
+            </button> */}
+          </div>
+        </div>
+      </div>
+      {/* <div className="flex mt-10 mb-10 space-x-4">
             <button className="font-roboto  border px-[40px] py-2 border-[#6633FF] hover:bg-[#6633FF]">
               Add New Link
             </button>
@@ -253,9 +323,8 @@ function Dashboard() {
             <button className="font-roboto  border px-[40px] py-2 border-[#6633FF] hover:bg-[#6633FF] ">
               Add Website
             </button>
-          </div>
-        </div>
-      </div>
+          </div> */}
+
       <div className="flex bg-[#0f172a4d] justify-between rounded-t-3xl py-14 px-20 mt-28 rounded-r-3xl relative">
         <Image src={logo_footer} alt="metag_logo" />
         <div className="flex space-x-5">
