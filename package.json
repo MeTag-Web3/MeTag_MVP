@@ -16,7 +16,12 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "tw-elements": "^1.0.0-alpha12",
-    "web3modal": "^1.9.8"
+    "web3modal": "^1.9.8",
+    "@uauth/js": "^2.0.0",
+    "@uauth/web3modal": "^2.0.0",
+    "@chakra-ui/icons": "^2.0.2",
+    "@chakra-ui/react": "^2.2.1",
+    "@chakra-ui/switch": "^2.0.3"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.7",
