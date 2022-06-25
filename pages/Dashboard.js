@@ -14,9 +14,31 @@ import logo from "../public/icons/metag_logo.svg";
 import logo_footer from "../public/icons/logo_footer.svg";
 import Gradient from "../components/Gradient";
 import axios from "axios";
+import Link from "next/link";
+import React from "react";
+
+
+
+
+
+
 
 
 function Dashboard() {
+
+  const inputRef = React.useRef(null);
+  const [userName, setUserName] = useState("");
+  const [description, setDescription] = useState("");
+
+
+  const handleInputChange = (e) => {
+    const val = e.target.value;
+    setUserName(val);
+  };
+    const handleValueChange = (e) => {
+      const val = e.target.value;
+      setDescription(val);
+    };
 
   const [metamaskAccount, setMetamaskAccount] = useState("");
   const [binanceAccount, setBinanceAccount] = useState("");
@@ -79,30 +101,28 @@ function Dashboard() {
     }
   }
   
-  // const fs = require("fs");
-  // const fetch = require("node-fetch");
-  // const FormData = require("form-data");
 
-  // const form = new FormData();
-  // const fileStream = fs.createReadStream("/path/to/file_to_upload.png");
-  // form.append("file", fileStream);
+  const onSubmit = async (params) => {
+    
+    const form = new FormData();
+    console.log(inputRef)
+    form.append("file", inputRef.current.files[0]);
 
-  // const options = {
-  //   method: "POST",
-  //   body: form,
-  //   headers: {
-  //     Authorization: "0f9b00bf-73e0-4c0c-8691-06e70948d2b6",
-  //   },
-  // };
+    const options = {
+      method: "POST",
+      body: form,
+      headers: {
+        Authorization: "0f9b00bf-73e0-4c0c-8691-06e70948d2b6",
+      },
+    };
 
-  const mintNft = async ()  => {
- await fetch(
+    fetch(
       "https://api.nftport.xyz/v0/mints/easy/files?" +
         new URLSearchParams({
           chain: "polygon",
-          name: "NFT_Name",
-          description: "NFT_Description",
-          mint_to_address: "Wallet_Address",
+          name: userName,
+          description: description,
+          mint_to_address: metamaskAccount,
         }),
       options
     )
@@ -112,14 +132,8 @@ function Dashboard() {
       .then(function (responseJson) {
         // Handle the response
         console.log(responseJson);
-      })
-   .catch(error => {
-      console.log(error)
-    })  
-    
+      });
   }
-
-
 
 
   return (
@@ -274,19 +288,22 @@ function Dashboard() {
                 type="text"
                 placeholder="UserName"
                 className="border-[#334155] border bg-[#1E293B] rounded-lg text-[#DBEAFE] py-2 px-10 w-[400px]"
-                //   value={metamaskAccount}
-                //   onChange={(e) => setMetamaskAccount(e.target.value)}
+                onChange={handleInputChange}
               />
-              {/* <button className="font-roboto font-  border px-[60px] py-2 border-[#6633FF] hover:bg-[#6633FF]">
-                Connect
-              </button> */}
+              <input
+                type="text"
+                placeholder="Description"
+                className="border-[#334155] border bg-[#1E293B] rounded-lg text-[#DBEAFE] py-2 px-10 w-[400px]"
+                onChange={handleValueChange}
+              />
             </div>
-            <form action="/action_page.php">
+            <form>
               <input
                 type="file"
                 className="border-[#334155] border bg-[#1E293B] rounded-lg text-[#DBEAFE] py-2 px-10 w-[400px] mt-5"
                 id="myFile"
                 name="filename"
+                ref={inputRef}
               />
               {/* <input type="submit" /> */}
             </form>
@@ -294,39 +311,18 @@ function Dashboard() {
           <div className="flex mt-10 mb-10 space-x-4">
             <button
               className="font-roboto  border-2 px-[40px] py-2 border-[#6633FF] hover:bg-[#6633FF]"
-              onClick={mintNft}
+              onClick={onSubmit}
             >
               MINT NFT
             </button>
-            {/* <button className="font-roboto  border-2 px-[40px] py-2 border-[#6633FF] hover:bg-[#6633FF] ">
-              Add Discord Invite
-            </button>
-            <button className="font-roboto  border-2 px-[40px] py-2 border-[#6633FF] hover:bg-[#6633FF] ">
-              Add Phone
-            </button>
-            <button className="font-roboto  border-2 px-[40px] py-2 border-[#6633FF] hover:bg-[#6633FF] ">
-              Add Website
-            </button> */}
           </div>
         </div>
       </div>
-      {/* <div className="flex mt-10 mb-10 space-x-4">
-            <button className="font-roboto  border px-[40px] py-2 border-[#6633FF] hover:bg-[#6633FF]">
-              Add New Link
-            </button>
-            <button className="font-roboto  border px-[40px] py-2 border-[#6633FF] hover:bg-[#6633FF] ">
-              Add Discord Invite
-            </button>
-            <button className="font-roboto  border px-[40px] py-2 border-[#6633FF] hover:bg-[#6633FF] ">
-              Add Phone
-            </button>
-            <button className="font-roboto  border px-[40px] py-2 border-[#6633FF] hover:bg-[#6633FF] ">
-              Add Website
-            </button>
-          </div> */}
 
       <div className="flex bg-[#0f172a4d] justify-between rounded-t-3xl py-14 px-20 mt-28 rounded-r-3xl relative">
-        <Image src={logo_footer} alt="metag_logo" />
+        <Link href="https://www.getmetag.io/">
+          <Image src={logo_footer} alt="metag_logo" />
+        </Link>
         <div className="flex space-x-5">
           <h6>Help</h6>
           <h6>Contact</h6>
