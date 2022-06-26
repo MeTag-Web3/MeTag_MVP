@@ -4,7 +4,7 @@ import { Button, useColorModeValue } from "@chakra-ui/react";
 
 const uauth = new UAuth({
   clientID: "91dfcfe5-6be7-4683-9d3e-4b1347c23781",
-  redirectUri: "http://localhost:3000/",
+  redirectUri: "https://test.getmetag.io/",
 });
 
 function UNSD() {
