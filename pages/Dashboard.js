@@ -39,7 +39,8 @@ function Dashboard() {
   const [metamaskAccount, setMetamaskAccount] = useState("");
   const [binanceAccount, setBinanceAccount] = useState("");
   const [portisAccount, setPortisAccount] = useState("");
-
+  const [imgUrl, setimgUrl] = useState("");
+  
   const connectWallet = async (event) => {
     
     let injectedProvider;
@@ -121,6 +122,8 @@ await fetch("https://api.nftport.xyz/v0/files", options)
     // Handle the response
     console.log(responseJson);
     console.log(responseJson.ipfs_url);
+
+    setimgUrl(responseJson.ipfs_url);
     
     // const { ipfs_url } = responseJson;
     // document.getElementById('image').textContent = image;
@@ -290,55 +293,61 @@ await fetch("https://api.nftport.xyz/v0/files", options)
           </div>
 
           <button className="font-roboto  border px-[60px] py-2 border-[#6633FF] hover:bg-[#6633FF]">
-            Add New Wallet
+            Add New Social Account
           </button>
         </div>
         <div className=" bg-[#0f172a4d] rounded-3xl p-7 mt-6">
-          <div className="flex flex-col">
-            <h4>MINT YOUR NFT</h4>
-            {/* <h5 className="text-[#94A3B8] font-normal">
-              Invite or share information about your channels or webpages
-            </h5> */}
-            {/* <Image src="" alt="" /> */}
-            <div className="flex flex-col mt-8">
-              <input
-                type="text"
-                placeholder="UserName"
-                className="border-[#334155] border bg-[#1E293B] rounded-lg text-[#DBEAFE] py-2 px-10 w-[400px] mb-5"
-                onChange={handleInputChange}
-              />
-              <input
-                type="text"
-                placeholder="Description"
-                className="border-[#334155] border bg-[#1E293B] rounded-lg text-[#DBEAFE] py-2 px-10 w-[400px]"
-                onChange={handleValueChange}
-              />
+          <div className="flex justify-between">
+            <div className="flex flex-col">
+              <div className="flex flex-col">
+                <h4>MINT YOUR NFT</h4>
+
+                <div className="flex flex-col mt-8">
+                  <input
+                    type="text"
+                    placeholder="UserName"
+                    className="border-[#334155] border bg-[#1E293B] rounded-lg text-[#DBEAFE] py-2 px-10 w-[400px] mb-5"
+                    onChange={handleInputChange}
+                  />
+                  <input
+                    type="text"
+                    placeholder="Description"
+                    className="border-[#334155] border bg-[#1E293B] rounded-lg text-[#DBEAFE] py-2 px-10 w-[400px]"
+                    onChange={handleValueChange}
+                  />
+                </div>
+                <form>
+                  <input
+                    type="file"
+                    className="border-[#334155] border bg-[#1E293B] rounded-lg text-[#DBEAFE] py-2 px-10 w-[400px] mt-5"
+                    id="myFile"
+                    name="filename"
+                    ref={inputRef}
+                  />
+                </form>
+              </div>
+              <div className="flex mt-10 mb-10 space-x-4">
+                <button
+                  className="font-roboto  border-2 px-[40px] py-2 border-[#6633FF] hover:bg-[#6633FF]"
+                  onClick={onSubmit}
+                >
+                  MINT NFT
+                </button>
+              </div>
+
+              <div className="flex space-x-3">
+                <button className="font-roboto  border-2 px-[60px] py-2 border-[#22C55E] hover:bg-[#22C55E]">
+                  EDIT
+                </button>
+                <button className="font-roboto  border-2 px-[60px] py-2 border-[#22C55E] hover:bg-[#22C55E]">
+                  SAVE
+                </button>
+              </div>
             </div>
-            <form>
-              <input
-                type="file"
-                className="border-[#334155] border bg-[#1E293B] rounded-lg text-[#DBEAFE] py-2 px-10 w-[400px] mt-5"
-                id="myFile"
-                name="filename"
-                ref={inputRef}
-              />
-            </form>
-          </div>
-          <div className="flex mt-10 mb-10 space-x-4">
-            <button
-              className="font-roboto  border-2 px-[40px] py-2 border-[#6633FF] hover:bg-[#6633FF]"
-              onClick={onSubmit}
-            >
-              MINT NFT
-            </button>
-          </div>
-          <div className="flex space-x-3">
-            <button className="font-roboto  border-2 px-[60px] py-2 border-[#22C55E] hover:bg-[#22C55E]">
-              EDIT
-            </button>
-            <button className="font-roboto  border-2 px-[60px] py-2 border-[#22C55E] hover:bg-[#22C55E]">
-              SAVE
-            </button>
+
+            <div className="mr-10 mt-10">
+              <img src={imgUrl} alt="NFT" width="300" height="400"></img>
+            </div>
           </div>
         </div>
       </div>
