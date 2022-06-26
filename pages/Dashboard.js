@@ -26,6 +26,8 @@ import React from "react";
 
 function Dashboard() {
 
+
+  // const [image, setImage] = useState("");
   const inputRef = React.useRef(null);
   const [userName, setUserName] = useState("");
   const [description, setDescription] = useState("");
@@ -101,6 +103,7 @@ function Dashboard() {
     }
   }
   
+  
 
   const onSubmit = async (params) => {
     
@@ -116,7 +119,22 @@ function Dashboard() {
       },
     };
 
-    fetch(
+await fetch("https://api.nftport.xyz/v0/files", options)
+  .then(response => {
+    return response.json()
+  })
+  .then(responseJson => {
+    // Handle the response
+    console.log(responseJson);
+    console.log(responseJson.ipfs_url);
+    
+    // const { ipfs_url } = responseJson;
+    // document.getElementById('image').textContent = image;
+    
+  })
+
+    
+   await fetch(
       "https://api.nftport.xyz/v0/mints/easy/files?" +
         new URLSearchParams({
           chain: "polygon",
@@ -139,6 +157,10 @@ function Dashboard() {
   return (
     <>
       <Gradient />
+      {/* <div> */}
+
+      {/* <Image id="image" src={image} alt="dgfd" onChange={onSubmit}/> */}
+      {/* </div> */}
       <div className="text-[#F8FAFC] text-[24px] px-24 pb-6 pt-10 font-roboto font-bold relative">
         Admin Dashboard
       </div>
@@ -283,11 +305,12 @@ function Dashboard() {
             {/* <h5 className="text-[#94A3B8] font-normal">
               Invite or share information about your channels or webpages
             </h5> */}
-            <div className="flex justify-between items-center mt-8">
+            {/* <Image src="" alt="" /> */}
+            <div className="flex flex-col mt-8">
               <input
                 type="text"
                 placeholder="UserName"
-                className="border-[#334155] border bg-[#1E293B] rounded-lg text-[#DBEAFE] py-2 px-10 w-[400px]"
+                className="border-[#334155] border bg-[#1E293B] rounded-lg text-[#DBEAFE] py-2 px-10 w-[400px] mb-5"
                 onChange={handleInputChange}
               />
               <input
@@ -305,7 +328,6 @@ function Dashboard() {
                 name="filename"
                 ref={inputRef}
               />
-              {/* <input type="submit" /> */}
             </form>
           </div>
           <div className="flex mt-10 mb-10 space-x-4">
