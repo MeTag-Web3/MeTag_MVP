@@ -18,12 +18,6 @@ import Link from "next/link";
 import React from "react";
 
 
-
-
-
-
-
-
 function Dashboard() {
 
 
@@ -250,7 +244,7 @@ await fetch("https://api.nftport.xyz/v0/files", options)
               </div>
               <input
                 type="text"
-                placeholder="Press Connect..."
+                placeholder="@getmetag"
                 className="border-[#334155] border bg-[#1E293B] rounded-lg text-[#DBEAFE] py-2 px-10 w-[600px]"
                 //   value={metamaskAccount}
                 //   onChange={(e) => setMetamaskAccount(e.target.value)}
@@ -267,7 +261,7 @@ await fetch("https://api.nftport.xyz/v0/files", options)
               </div>
               <input
                 type="text"
-                placeholder="Press Connect..."
+                placeholder="https://discord.gg/hCNkDQcd"
                 className="border-[#334155] border bg-[#1E293B] rounded-lg text-[#DBEAFE] py-2 px-10 w-[600px]"
                 //   value={metamaskAccount}
                 //   onChange={(e) => setMetamaskAccount(e.target.value)}
@@ -284,7 +278,7 @@ await fetch("https://api.nftport.xyz/v0/files", options)
               </div>
               <input
                 type="text"
-                placeholder="Press Connect..."
+                placeholder="@getmetag"
                 className="border-[#334155] border bg-[#1E293B] rounded-lg text-[#DBEAFE] py-2 px-10 w-[600px]"
                 //   value={metamaskAccount}
                 //   onChange={(e) => setMetamaskAccount(e.target.value)}
@@ -339,13 +333,12 @@ await fetch("https://api.nftport.xyz/v0/files", options)
             </button>
           </div>
           <div className="flex space-x-3">
-
-          <button className="font-roboto  border-2 px-[60px] py-2 border-[#22C55E] hover:bg-[#22C55E]">
-            EDIT
-          </button>
-          <button className="font-roboto  border-2 px-[60px] py-2 border-[#22C55E] hover:bg-[#22C55E]">
-            SAVE
-          </button>
+            <button className="font-roboto  border-2 px-[60px] py-2 border-[#22C55E] hover:bg-[#22C55E]">
+              EDIT
+            </button>
+            <button className="font-roboto  border-2 px-[60px] py-2 border-[#22C55E] hover:bg-[#22C55E]">
+              SAVE
+            </button>
           </div>
         </div>
       </div>
