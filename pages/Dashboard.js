@@ -338,6 +338,15 @@ await fetch("https://api.nftport.xyz/v0/files", options)
               MINT NFT
             </button>
           </div>
+          <div className="flex space-x-3">
+
+          <button className="font-roboto  border-2 px-[60px] py-2 border-[#22C55E] hover:bg-[#22C55E]">
+            EDIT
+          </button>
+          <button className="font-roboto  border-2 px-[60px] py-2 border-[#22C55E] hover:bg-[#22C55E]">
+            SAVE
+          </button>
+          </div>
         </div>
       </div>
 
