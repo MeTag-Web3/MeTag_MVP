@@ -11,7 +11,6 @@ import twitter from "../public/icons/twitter.svg";
 import discord from "../public/icons/discord.svg";
 import telegram from "../public/icons/telegram.svg";
 import logo from "../public/icons/metag_logo.svg";
-import logo_footer from "../public/icons/logo_footer.svg";
 import Gradient from "../components/Gradient";
 import axios from "axios";
 import Link from "next/link";
@@ -154,10 +153,6 @@ await fetch("https://api.nftport.xyz/v0/files", options)
   return (
     <>
       <Gradient />
-      {/* <div> */}
-
-      {/* <Image id="image" src={image} alt="dgfd" onChange={onSubmit}/> */}
-      {/* </div> */}
       <div className="text-[#F8FAFC] text-[24px] px-24 pb-6 pt-10 font-roboto font-bold relative">
         Admin Dashboard
       </div>
@@ -349,17 +344,6 @@ await fetch("https://api.nftport.xyz/v0/files", options)
               <img src={imgUrl} alt="NFT" width="300" height="400"></img>
             </div>
           </div>
-        </div>
-      </div>
-
-      <div className="flex bg-[#0f172a4d] justify-between rounded-t-3xl py-14 px-20 mt-28 rounded-r-3xl relative">
-        <Link href="https://www.getmetag.io/">
-          <Image src={logo_footer} alt="metag_logo" />
-        </Link>
-        <div className="flex space-x-5">
-          <h6>Help</h6>
-          <h6>Contact</h6>
-          <h6>Privacy and Legal</h6>
         </div>
       </div>
     </>

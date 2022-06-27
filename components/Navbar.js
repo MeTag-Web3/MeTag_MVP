@@ -29,12 +29,13 @@ function Navbar() {
       <div className="flex mr-auto py-2 pl-6">
         <Link href="/">
           <a className="flex mr-auto hover:bg-[#dbd5d533] ease-in transition duration-700 px-2 py-1 border-0 rounded-xl">
-            <Image src={logo} alt="metag_logo" />
+            <Link href="https://www.getmetag.io/">
+              <Image src={logo} alt="metag_logo" />
+            </Link>
           </a>
         </Link>
       </div>
 
-   
       <div className="items-end flex flex-row space-x-5">
         <UNSD />
         <button
