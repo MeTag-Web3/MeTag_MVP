@@ -5,12 +5,12 @@ import right from "../public/right.svg";
 export default function Gradient() {
     return (
       
-        <div className="absolute">
-            <Image src={left} alt="lgrad"/>
-        </div>
-        /* <div className="absolute">
-            <Image src={right} alt="lgrad"/>
-        </div> */
+        // <div className="absolute">
+        //     <Image src={left} alt="lgrad"/>
+        // </div>
+        <div className="absolute bg-grad">
+           <p> </p>
+       </div>
      
     );
 }

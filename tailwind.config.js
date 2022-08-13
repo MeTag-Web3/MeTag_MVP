@@ -7,9 +7,15 @@ module.exports = {
   ],
   theme: {
     extend: {
+      backgroundImage: (theme) => ({
+        grad: "url('/Union.svg')",
+        grad2: "url('/grad2.svg')",
+        grad3: "url('/grad3.svg')",
+        grad4: "url('/grad4.svg')",
+      }),
       fontFamily: {
-       roboto:"'Roboto', sans-serif"
-    },
+        roboto: "'Roboto', sans-serif",
+      },
       screens: {
         xs: "374px",
         phone: "375px",
